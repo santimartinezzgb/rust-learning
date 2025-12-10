@@ -1,2 +1,2 @@
-#Curso de C para principiantes
+# Curso de C para principiantes
 En proceso...
