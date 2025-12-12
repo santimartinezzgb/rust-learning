@@ -20,3 +20,13 @@ fn main() {
 }
 
 // sudo apt install libgtk-4-dev --> cargo run
+
+// Git LFS: search archives >50MB (example: *.rlib, *.bin)
+// # git lfs track "*.rlib"
+// # git add .gitattributes
+// # git commit -m "Configurate LFS"
+// # git push
+// Hide repo slowness/size, download on demand
+
+// References
+// https://git-lfs.com/
