@@ -3,12 +3,6 @@
 
 This repository contains exercises and practical examples following the book ["The Rust Programming Language"](https://doc.rust-lang.org/book).
 
-## Structure
-- `1-first_step`: First steps in Rust.
-- `2-hello_cargo`: Basic project using Cargo.
-- `3-guessing_game`: Guessing game project.
-- `4-new_window`: Example for window handling.
-
 ## Getting Started
 
 ### 1. Install Rust
@@ -59,3 +53,7 @@ cargo run
 - Keeps repository size manageable.
 - Makes cloning and pulling faster.
 - Prevents large files from being stored directly in Git history.
+
+
+### Author
+Santi Martínez
