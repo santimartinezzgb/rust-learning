@@ -13,8 +13,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 Then restart your terminal and check the installation:
 ```bash
-rustc --version
-cargo --version
+rustc --version # rustc: Rust compiler
+cargo --version # cargo: package manager + build system (uses rustc internally)
 ```
 
 ### 2. Clone this repository
