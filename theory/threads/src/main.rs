@@ -4,13 +4,13 @@ use std::time::Duration;
 
 fn main() {
     println!("=== Exercise 1: Basic Thread ===");
-    basic_thread();
+    //basic_thread();
 
     println!("=== Exercise 2: Join Handle ===");
-    join_handle();
+    //join_handle();
 
     println!("=== Exercise 3: Move Closure ===");
-    move_closure();
+    //move_closure();
 
     println!("=== Exercise 4: Create multiple threads ===");
     create_multiple_threads();
@@ -67,7 +67,7 @@ fn create_multiple_threads() {
         let handle = thread::spawn(move || {
             println!("Thread {} working...", i);
             thread::sleep(Duration::from_millis(2000));
-            i * 2
+            i + 1 // Without ; - this is a return expresion
         });
 
         // Push threads to vector
@@ -76,7 +76,7 @@ fn create_multiple_threads() {
 
     // Print the thread results
     for handle in handles {
-        let resultado = handle.join().unwrap();
-        println!("Result: {}", resultado);
+        let result = handle.join().unwrap();
+        println!("Result: {}", result);
     }
 }
