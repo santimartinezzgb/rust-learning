@@ -13,7 +13,10 @@ fn main() {
     //move_closure();
 
     println!("=== Exercise 4: Create multiple threads ===");
-    create_multiple_threads();
+    //create_multiple_threads();
+
+    println!("=== Exercise 5: Share data between threads ===");
+    share_data_threads();
 }
 
 fn basic_thread() {
@@ -79,4 +82,36 @@ fn create_multiple_threads() {
         let result = handle.join().unwrap();
         println!("Result: {}", result);
     }
+}
+
+// 5. Share data between threads with Arc<Mutex<T>>
+fn share_data_threads() {
+    // Create a secure shared counter between threads
+    // Arc: share
+    // Mutex: protect
+    // Arc = Shared link you give to 10 people
+    // Mutex = The lock that only allows one person to edit it at a time
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        // &counter. Clone a counter reference, not his value
+        // VERY IMPORTANT: https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html?highlight=OWNERSHIP#what-is-ownership
+        let counter_clone = Arc::clone(&counter);
+
+        let handle = thread::spawn(move || {
+            // .lock() to use a value Mutex
+            let mut num = counter_clone.lock().unwrap();
+            // *. To access inside mutex
+            *num += 1;
+        });
+
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Final counter result: {}", *counter.lock().unwrap());
 }
