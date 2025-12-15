@@ -7,6 +7,7 @@ struct Book {
     available: bool,
 }
 impl Book {
+    // impl block to add methods to Book struct
     fn new(title: String, author: String, available: bool) -> Self {
         Book {
             title,
@@ -29,6 +30,7 @@ impl Library {
         }
     }
     fn add_book(&mut self, book: Book) {
+        // &mut self means this method can modify the struct instance
         self.books.push(book);
     }
 }
@@ -47,13 +49,13 @@ fn main() {
         false,
     );
 
-    library.add_book(book_1); // In this moment the book is moved to library, so we can't use it anymore here. This is ownership in action.
-                              // On rust. Any value has a single owner.
+    library.add_book(book_1);
     library.add_book(book_2);
+    // In this moment the books is moved to library, so we can't use it anymore here. This is ownership in action. On rust. Any value has a single owner.
 
     println!("Library's name: {}", library.name);
     for book in &library.books {
-        // If you not use & here, the book will be moved from library to this loop, and you can't use library anymore.
+        // If you not use <&> here, the book will be moved from library to this loop, and you can't use library anymore.
         println!(
             "Book: {}, Author: {}, Available: {}",
             book.title, book.author, book.available
