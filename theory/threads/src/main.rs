@@ -4,7 +4,7 @@ use std::time::Duration;
 
 fn main() {
     println!("=== Exercise 1: Basic Thread ===");
-    //basic_thread();
+    basic_thread();
 
     println!("=== Exercise 2: Join Handle ===");
     //join_handle();
@@ -16,15 +16,15 @@ fn main() {
     //create_multiple_threads();
 
     println!("=== Exercise 5: Share data between threads ===");
-    share_data_threads();
+    //share_data_threads();
 }
 
 fn basic_thread() {
     thread::spawn(|| {
         println!("Hello from secondary thread");
-    });
+    }); // Spawn a new thread || This works like a closure
 
-    thread::sleep(Duration::from_millis(2000));
+    thread::sleep(Duration::from_millis(2000)); // Without this the primary thread ends before the secondary, so we don't see the output
     println!("Hello from primary thread");
 }
 
