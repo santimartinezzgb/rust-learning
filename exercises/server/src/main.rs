@@ -20,7 +20,7 @@ fn main() {
             stream.read(&mut buf).unwrap();
 
             // Response HTTP simple message
-            let res = "HTTP/1.1 200 OK\r\n\r\nhola mundo";
+            let res = "HTTP/1.1 200 OK\r\n\r\nMessage from server";
 
             // Envía la respuesta al cliente
             stream.write_all(res.as_bytes()).unwrap();
